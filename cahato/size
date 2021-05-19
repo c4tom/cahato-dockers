@@ -1,0 +1,10 @@
+#!/bin/bash
+# @app      docker-images
+# @author   cahato https://github.com/c4tom
+
+tag=${1:-"latest"}
+DIR=${PWD##*/}
+for project in $(find ./ -name Dockerfile); do
+    image=$(echo $project | sed "s#\./##" | sed "s#/Dockerfile##")
+    docker images $DIR/$image:$tag
+done
