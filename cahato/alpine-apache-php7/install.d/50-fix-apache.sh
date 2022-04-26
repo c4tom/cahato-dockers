@@ -26,21 +26,20 @@ fi
 if [ ! -d /run/apache2 ]; then
     mkdir /run/apache2
 fi
-chmod -R 755 /scripts/pre-init.d
+
 mkdir -p /run/apache2
-chown apache:apache /run/apache2
+chown $APACHE_USER:$APACHE_GROUP /run/apache2
 
 initTitle "Apache" "Loading Modules"
+
 a2setModule 1 "rewrite"
 a2setModule 1 "mpm_prefork"
-a2setModule 1 "slotmem_shm"
+#a2setModule 1 "slotmem_shm"
 a2setModule 1 "heartmonitor"
-#~ a2setModule 1 "watchdog"
+a2setModule 1 "vhost_alias"
+#a2setModule 1 "http2" 
+a2setModule 1 "deflate"
+#a2setModule 1 "watchdog"
+
 initTitle "Apache" "Removing Modules"
 a2setModule 0 "mpm_event"
-a2setModule 0 "proxy_fdpass" /etc/apache2/conf.d/proxy.conf
-
-sed -i "s|;*date.timezone =.*|date.timezone = ${TZ}|i" /etc/php7/php.ini
-sed -ir 's/expose_php = On/expose_php = Off/' /etc/php7/php.ini
-echo -e "\nIncludeOptional /app/vhost" >> /etc/apache2/httpd.conf
-unset tmpsed

@@ -2,17 +2,17 @@
 # @app      cahato/alpine
 # @author   cahato https://github.com/c4tom
 
-if [ ! -z "$TZ" ] && [ -f "/usr/share/zoneinfo/$TZ" ]; then
-    echo "$TZ" > /etc/TZ
-    cp "/usr/share/zoneinfo/$TZ" "/etc/localtime"
-    if [ ! "${TZ///*/}" = "$TZ" ]; then
-        mkdir -p "/usr/share/zoneinfo/${TZ///*/}"
-    fi
-    cp /etc/localtime "/usr/share/zoneinfo/$TZ"
-    echo -e "\033[1;38;5;203mTIMEZONE : $TZ"
-    date
-    echo -en "\033[m"
-    apk del tzdata
-else
-    echo -e "\033[1;38;5;203mNO DEFINED TIMEZONE"
+# https://wiki.alpinelinux.org/wiki/Alpine_setup_scripts#setup-timezone
+
+if [ ! -f "/etc/TZ" ] || [ ! -f "/sbin/setup-timezone" ]; then
+    apk --update add tzdata alpine-conf
+    echo $TZ > /etc/TZ
 fi
+
+setup-timezone -z $TZ
+
+echo -e "\033[1;38;5;203mTIMEZONE : $TZ"
+date
+echo -en "\033[m"
+
+apk del tzdata alpine-conf

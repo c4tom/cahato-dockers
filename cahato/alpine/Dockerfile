@@ -3,8 +3,6 @@
 
 FROM alpine:3.13
 
-MAINTAINER a-Sansara https://github.com/a-sansara
-
 ADD files.tar /scripts
 
 ENV     TERM=xterm \
@@ -15,6 +13,8 @@ ENV     TERM=xterm \
 
 VOLUME /app
 
-RUN apk --update add bash && bash /scripts/install.sh
+
+RUN apk --update add bash curl && \
+   bash /scripts/install.sh
 
 ENTRYPOINT ["/scripts/main.sh"]

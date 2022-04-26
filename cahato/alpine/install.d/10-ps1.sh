@@ -7,6 +7,12 @@ if [ ! -f /root/.bash_ps1 ]; then
 if [ -f ~/.bash_ps1 ]; then
     . ~/.bash_ps1
 fi
+
+for i in /scripts/profile.d/*.sh
+do
+    source \$i
+done
+
 EOF
     sed -n '1,22 p' /scripts/util.sh > /root/.bash_ps1
     echo "bash_prompt" >> /root/.bash_ps1

@@ -33,7 +33,7 @@ function preInit(){
     for i in ls $1/*.sh
     do
         if [ -e "${i}" ]; then
-            initTitle "Processing" "$i"
+            initTitle "${SHENV_NAME} >> Processing" "$i"
             . "${i}"
         fi
     done
