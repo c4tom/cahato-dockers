@@ -1,0 +1,25 @@
+version: '3.0'
+
+services:
+  cahato_phpmyadmin:
+    image: cahato/alpine-apache:latest
+    container_name: cahato_phpmyadmin
+    environment: 
+      - PHP_FPM_CONTAINER=cahato_pma:9000
+      - PHP_FPM_CONTEXT=pma
+    ports:
+       - "52500:80"   
+    restart: always
+    network_mode: bridge
+    links: 
+      - 'cahato_pma'
+
+  cahato_pma:
+    container_name: cahato_php-fpm-pma
+    image: cahato/alpine-fpm-phpmyadmin:latest
+    ports:
+      - 9000:9000
+    environment:
+      - PMA_ARBITRARY=1 # when set to 1 connection to the arbitrary server will be allowed
+      - PMA_HOSTS=mariadb # define address/host name of the MySQL server
+    network_mode: bridge

@@ -1,0 +1,10 @@
+version: '3.0'
+
+services:
+  cahato_apache:
+    image: cahato/alpine-apache:latest
+    container_name: cahato_apache
+    ports:
+       - "52600:80"
+    restart: always
+    network_mode: bridge
