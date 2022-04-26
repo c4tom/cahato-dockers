@@ -2,14 +2,7 @@
 
 various based images for Docker
 
-## Available Images
-
-- index
-- cahato/alpine                     ( ~ 10 MB ) Alpine/3.13
-  - cahato/alpine-apache-php7       ( ~ 58 MB ) Apache/2.4.46 Php/7.4.19
-  - cahato/alpine-mariadb           ( ~ 49 MB ) MariaDB/10.5.9 ( MariaDB )
-- docker tips
-
+[Available Images](images.md)
 ## Base Image Structure
 
 ```
@@ -71,3 +64,4 @@ __build__ script archive project files in __files.tar__ then execute the __Docke
 
 no need to worry about pwd, docker repository and image name depends on directory structure.
 you can keep same __build__ script in any project
+
