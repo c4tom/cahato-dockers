@@ -1,0 +1,10 @@
+version: '3.0'
+
+services:
+  cahato_apache-php:
+    image: cahato/alpine-apache-php7-wordpress:latest
+    container_name: cahato_apache_php7-wordpress
+    ports:
+       - "52800:80"
+    restart: always
+    network_mode: bridge

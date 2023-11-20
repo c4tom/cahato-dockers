@@ -1,0 +1,24 @@
+#!/bin/bash
+# @app      docker-images
+# @author   cahato https://github.com/c4tom
+set -e
+
+Ctitle="\033[41m"
+ Citem="\033[1;38;5;36m"
+  Coff="\033[m"
+
+tag=${1:-"latest"}
+
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+TAG=${1:-''}
+for project in `ls -d */`; do
+    folder="$DIR/$project"
+    dirName=${PWD##*/}
+    echo -e "${Ctitle} $folder ${Coff}${Citem}"
+    cd $folder
+   
+    cp -f ../build_for_each_project .build
+
+    ./.build "$tag"
+    #read
+done
