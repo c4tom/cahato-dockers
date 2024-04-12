@@ -17,7 +17,7 @@ function a2setModule(){
     fi
 }
 if [ ! -f /usr/bin/php ]; then
-    ln -s /usr/bin/php81 /usr/bin/php
+    ln -s /usr/bin/php82 /usr/bin/php
 fi
 if [ ! -f /usr/lib/libxml2.so ]; then
     ln -s /usr/lib/libxml2.so.2 /usr/lib/libxml2.so

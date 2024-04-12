@@ -19,6 +19,8 @@ fi
 
 a2setModule 0 "proxy_fdpass"
 a2setModule 0 "mod_watchdog"
-a2setModule 0 "slotmem_shm_module"
+a2setModule 0 "slotmem_shm"
+a2setModule 1 "remoteip"
+#a2setModule 1 "http2"
 
 rm -f /scripts/install.d/05-fix-apache-proxy.sh

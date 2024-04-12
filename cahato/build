@@ -16,9 +16,7 @@ for project in `ls -d */`; do
     dirName=${PWD##*/}
     echo -e "${Ctitle} $folder ${Coff}${Citem}"
     cd $folder
-   
     cp -f ../build_for_each_project .build
-
     ./.build "$tag"
     #read
 done

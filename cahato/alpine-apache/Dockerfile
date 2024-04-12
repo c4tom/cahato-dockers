@@ -21,8 +21,8 @@ ENV      SHENV_NAME=ALPINE-APACHE \
 # PHP_FPM_CONTAINER
 # PHP_FPM_CONTEXT
 
-RUN addgroup -g ${APACHE_GID} ${APACHE_GROUP} && \
-  adduser -H -u ${APACHE_UID} ${APACHE_USER} -G ${APACHE_GROUP} -D -s /sbin/nologin && \
+#RUN addgroup -g ${APACHE_GID} ${APACHE_GROUP} && \
+RUN adduser -H -u ${APACHE_UID} ${APACHE_USER} -G ${APACHE_GROUP} -D -s /sbin/nologin && \
   apk add apache2 apache2-proxy apache-mod-fcgid apache2-brotli apache2-utils certbot-apache apache2-ssl  apache2-webdav apache2-http2 apache2-ldap
 
 EXPOSE 80

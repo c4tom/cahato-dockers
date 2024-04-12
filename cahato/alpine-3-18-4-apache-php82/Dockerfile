@@ -1,7 +1,7 @@
 # @app      cahato/alpine-apache
 # @author   cahato https://github.com/c4tom
 
-FROM cahato/alpine_3_18_4-apache:latest
+FROM cahato/alpine-3-18-4-apache:latest
 
 ADD files.tar /scripts
 

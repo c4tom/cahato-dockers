@@ -1,7 +1,7 @@
 # @app      cahato/alpine
 # @author   cahato https://github.com/c4tom
 
-FROM alpine:3.13
+FROM alpine:3.15
 
 ADD files.tar /scripts
 

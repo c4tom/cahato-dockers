@@ -21,9 +21,6 @@ fi
 
 sed -i 's#^DocumentRoot ".*#DocumentRoot "/app/'$WWW_DIR'"#g' $APACHE_CONF
 sed -i 's#AllowOverride none#AllowOverride All#' $APACHE_CONF
-sed -i 's/#LoadModule remoteip_module/LoadModule remoteip_module/' $APACHE_CONF
-sed -i 's/#LoadModule http2_module/LoadModule http2_module/' $APACHE_CONF
-sed -i 's/#LoadModule mime_magic_module/LoadModule mime_magic_module/' $APACHE_CONF
 
 
 if [ "$FIX_OWNERSHIP" = "1" ]; then
